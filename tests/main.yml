@@ -1,2 +1,38 @@
 ---
 # Tasks for testing role
+
+- name: configure docker sandbox environment
+  hosts: localhost
+  roles:
+    - role: amtega.docker_presets
+      docker_presets_images_json_query: >-
+        [? starts_with(name, `centos-6`)
+           || starts_with(name, `centos-7`)
+           || starts_with(name, `debian-9`)
+           || starts_with(name, `fedora-27`)
+           || starts_with(name, `fedora-28`) ]
+  tags:
+    - sandbox
+
+- name: run idempotence test
+  hosts: localhost
+  roles:
+    - role: amtega.docker_sandbox
+      vagrant_sandbox_state: started
+  tags:
+    - sandbox
+
+- name: test docker_engine role
+  hosts: docker_sandbox_containers
+  roles:
+    - role: amtega.ansible
+      ansible_version: 2.5.0
+  tasks:
+    - name: get ansible version
+      shell: "ansible --version"
+      changed_when: false
+      register: ansible_version_result
+
+    - name: check that ansible version is correct
+      assert:
+        that: ansible_version_result.stdout_lines[0] == "ansible 2.5.0"
