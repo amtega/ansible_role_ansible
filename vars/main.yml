@@ -1,2 +1,50 @@
 ---
 # Role variables
+
+# Packages to install
+
+ansible_packages:
+  debian_9:
+    - python-pip
+    - python-boto3
+    - python-passlib
+    - python-psutil
+    - python-selinux
+    - pkg-config
+    - libglib2.0-dev
+    - gobject-introspection
+    - libgirepository1.0-dev
+    - libcairo2-dev
+    - sshpass
+
+  centos_7:
+    - python-pip
+    - python-boto3
+    - python-passlib
+    - python-psutil
+    - libselinux-python
+    - sshpass
+
+  fedora_27:
+    - python-pip
+    - python-boto3
+    - python-passlib
+    - python-psutil
+    - libselinux-python
+    - sshpass
+
+  fedora_28:
+    - python-pip
+    - python-boto3
+    - python-passlib
+    - python-psutil
+    - libselinux-python
+    - sshpass
+
+  rhel_7:
+    - python-pip
+    - python-boto3
+    - python-passlib
+    - python-psutil
+    - libselinux-python
+    - sshpass

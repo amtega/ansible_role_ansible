@@ -1,0 +1,13 @@
+---
+# Role install tasks
+
+- name: install ansible packages
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ ansible_packages[distro_packages_key] }}"
+  vars:
+    distro_packages_key: >-
+      {{ ansible_facts.distribution
+         | lower
+         + "_" + ansible_facts.distribution_major_version }}
