@@ -1,0 +1,16 @@
+{{ ansible_managed | comment }}
+
+{% macro item(name, join_character=" ") %}
+{% if hostvars[inventory_hostname][name] is defined %}
+{% set value=hostvars[inventory_hostname][name] %}
+{% if value is iterable and value is not string %}}
+{{ name }} = {{ value | join(join_character) }}
+{% else %}
+{{ name }} = {{ value }}
+{% endif %}
+{% endif %}
+{% endmacro %}
+
+[defaults]
+
+{{ item("ansible_defaults_inventory") }}
