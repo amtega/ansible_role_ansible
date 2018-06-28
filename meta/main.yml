@@ -20,4 +20,6 @@ galaxy_info:
     - ansible
     - system
 
-dependencies: []
+dependencies:
+  - role: amtega.epel
+    when: ansible_facts.distribution | lower in ['centos', 'rhel']
