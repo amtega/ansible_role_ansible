@@ -1,2 +1,264 @@
 ---
-# Role default lower priority variables
+# ansible_defaults_Role default lower priority variables
+
+#
+# Ansible version to install. If empty latest version will be installed
+#
+
+ansible_required_version:
+
+#
+# Ansible defaults config options. See ansible documentation for details
+#
+
+#ansible_defaults_inventory: /etc/ansible/hosts
+#ansible_defaults_roles_path: /etc/ansible/roles
+#ansible_defaults_library: /usr/share/my_modules/
+#ansible_defaults_module_utils: /usr/share/my_module_utils/
+#ansible_defaults_remote_tmp: ~/.ansible/tmp
+#ansible_defaults_local_tmp: ~/.ansible/tmp
+#ansible_defaults_plugin_filters_cfg: /etc/ansible/plugin_filters.yml
+#ansible_defaults_action_plugins: /usr/share/ansible/plugins/action
+#ansible_defaults_cache_plugins: /usr/share/ansible/plugins/cache
+#ansible_defaults_callback_plugins: /usr/share/ansible/plugins/callback
+#ansible_defaults_connection_plugins: /usr/share/ansible/plugins/connection
+#ansible_defaults_lookup_plugins: /usr/share/ansible/plugins/lookup
+#ansible_defaults_inventory_plugins: /usr/share/ansible/plugins/inventory
+#ansible_defaults_vars_plugins: /usr/share/ansible/plugins/vars
+#ansible_defaults_filter_plugins: /usr/share/ansible/plugins/filter
+#ansible_defaults_test_plugins: /usr/share/ansible/plugins/test
+#ansible_defaults_terminal_plugins: /usr/share/ansible/plugins/terminal
+#ansible_defaults_strategy_plugins: /usr/share/ansible/plugins/strategy
+#ansible_defaults_forks: 5
+#ansible_defaults_poll_interval: 15
+#ansible_defaults_sudo_user: root
+#ansible_defaults_ask_sudo_pass: true
+#ansible_defaults_ask_pass: true
+#ansible_defaults_transport: smart
+#ansible_defaults_remote_port: 22
+#ansible_defaults_module_lang: C
+#ansible_defaults_module_set_locale: false
+#ansible_defaults_gathering: implicit
+#ansible_defaults_gather_subset: all
+#ansible_defaults_gather_timeout: 10
+#ansible_defaults_host_key_checking: false
+#ansible_defaults_timeout: 10
+#ansible_defaults_log_path: /var/log/ansible.log
+#ansible_defaults_ansible_managed: Ansible managed
+#ansible_defaults_fact_caching: memory
+#ansible_defaults_stdout_callback: skippy
+#ansible_defaults_callback_whitelist: timer mail
+#ansible_defaults_task_includes_static: false
+#ansible_defaults_handler_includes_static: false
+#ansible_defaults_error_on_missing_handler: true
+#ansible_defaults_sudo_exe: sudo
+#ansible_defaults_sudo_flags: -H -S -n
+#ansible_defaults_remote_user: root
+#ansible_defaults_module_name: command
+#ansible_defaults_executable: /bin/sh
+#ansible_defaults_hash_behaviour: replace
+#ansible_defaults_private_role_vars: yes
+#ansible_defaults_jinja2_extensions:
+#  - jinja2.ext.do
+#  - jinja2.ext.i18n
+#ansible_defaults_private_key_file: /path/to/file
+#ansible_defaults_vault_password_file: /path/to/vault_password_file
+#ansible_defaults_display_skipped_hosts: true
+#ansible_defaults_display_args_to_stdout: false
+#ansible_defaults_error_on_undefined_vars: false
+#ansible_defaults_system_warnings: true
+#ansible_defaults_deprecation_warnings: true
+#ansible_defaults_command_warnings: false
+#ansible_defaults_strategy: free
+#ansible_defaults_bin_ansible_callbacks: false
+#ansible_defaults_nocows: 1
+#ansible_defaults_cow_selection: default
+#ansible_defaults_cow_selection: random
+#ansible_defaults_cow_whitelist:
+#  - bud-frogs
+#  - bunny
+#  - cheese
+#  - daemon
+#  - default
+#  - dragon
+#  - elephant-in-snake
+#  - elephant
+#  - eyes
+#  - hellokitty
+#  - kitty
+#  - luke-koala
+#  - meow
+#  - milk
+#  - moofasa
+#  - moose
+#  - ren
+#  - sheep
+#  - small
+#  - stegosaurus
+#  - stimpy
+#  - supermilker
+#  - three-eyes
+#  - turkey
+#  - turtle
+#  - tux
+#  - udder
+#  - vader-koala
+#  - vader
+#  - www
+#ansible_defaults_nocolor: 1
+#ansible_defaults_retry_files_enabled: false
+#ansible_defaults_retry_files_save_path: ~/.ansible-retry
+#ansible_defaults_squash_actions: apkaptdnfhomebrewpacmanpkgngyumzypper
+#ansible_defaults_no_log: false
+#ansible_defaults_no_target_syslog: false
+#ansible_defaults_allow_world_readable_tmpfiles: false
+#ansible_defaults_var_compression_level: 9
+#ansible_defaults_module_compression: 'ZIP_DEFLATED'
+#ansible_defaults_max_diff_size: 1048576
+#ansible_defaults_merge_multiple_cli_flags: true
+#ansible_defaults_show_custom_stats: true
+#ansible_defaults_inventory_ignore_extensions:
+#  - .orig
+#  - .bak
+#  - .ini
+#  - .cfg
+#  - .retry
+#  - .pyc
+#  - .pyo
+#ansible_defaults_network_group_modules:
+#  - eos
+#  - nxos
+#  - ios
+#  - iosxr
+#  - junos
+#  - vyos
+#ansible_defaults_allow_unsafe_lookups: false
+#ansible_defaults_ansible_defaults_any_errors_fatal: false
+
+#
+# Ansible inventory config options. See ansible documentation for details
+#
+
+#ansible_inventory_enable_plugins:
+# - host_list
+# - virtualbox
+# - yaml
+# - constructed
+#ansible_inventory_ignore_extensions:
+# - .pyc
+# - .pyo
+# - .swp
+# - .bak
+# - .rpm
+# - .md
+# - .txt
+# - .orig
+# - .ini
+# - .cfg
+# - .retry
+#ansible_inventory_ignore_patterns:
+#ansible_inventory_unparsed_is_failed: false
+
+#
+# Ansible privilege escalation config options. See ansible documentation for
+# details
+#
+
+#ansible_privilege_escalation_become: true
+#ansible_privilege_escalation_become_method: sudo
+#ansible_privilege_escalation_become_user: root
+#ansible_privilege_escalation_become_ask_pass: false
+
+# Ansible paramiko connection config options. See ansible documentation for
+# details
+
+#ansible_paramiko_connection_record_host_keys: false
+#ansible_paramiko_connection_pty: false
+#ansible_paramiko_connection_look_for_keys: false
+#ansible_paramiko_connection_host_key_auto_add: true
+
+#
+# Ansible ssh connection config options. See ansible documentation for details
+#
+
+#ansible_ssh_connection_ssh_args: -C -o ControlMaster=auto -o ControlPersist=60s
+#ansible_ssh_connection_control_path_dir: ~/.ansible/cp
+#ansible_ssh_connection_control_path:
+#ansible_ssh_connection_pipelining: false
+#ansible_ssh_connection_scp_if_ssh: smart
+#ansible_ssh_connection_transfer_method: smart
+#ansible_ssh_connection_sftp_batch_mode: false
+#ansible_ssh_connection_use_tty: true
+
+#
+# Ansible persistent connection config options. See ansible documentation for
+# details
+#
+
+#ansible_persistent_connection_connect_timeout: 30
+#ansible_persistent_connection_connect_retry_timeout: 15
+#ansible_persistent_connection_command_timeout: 10
+
+#
+# Ansible accelerate config options. See ansible documentation for details
+#
+
+#ansible_accelerate_port: 5099
+#ansible_accelerate_timeout: 30
+#ansible_accelerate_connect_timeout: 5.0
+#ansible_accelerate_daemon_timeout: 30
+#ansible_accelerate_multi_key: yes
+
+#
+# Ansible selinux config options. See ansible documentation for details
+#
+
+#ansible_selinux_special_context_filesystems: nfsvboxsffuseramfs9p
+#ansible_selinux_libvirt_lxc_noseclabel: yes
+
+#
+# Ansible colors config options. See ansible documentation for details
+#
+
+# ansible_colors_highlight: white
+# ansible_colors_verbose: blue
+# ansible_colors_warn: bright purple
+# ansible_colors_error: red
+# ansible_colors_debug: dark gray
+# ansible_colors_deprecate: purple
+# ansible_colors_skip: cyan
+# ansible_colors_unreachable: red
+# ansible_colors_ok: green
+# ansible_colors_changed: yellow
+# ansible_colors_diff_add: green
+# ansible_colors_diff_remove: red
+# ansible_colors_diff_lines: cyan
+
+#
+# Ansible diff config options. See ansible documentation for details
+#
+
+# ansible_diff_always: no
+# ansible_diff_context: 3
+
+#
+# Extra arguments for the python pip tool to install packages
+#
+
+ansible_pip_extra_args:
+
+#
+# Proxy settings
+#
+
+# IP address and port, or URL, for using an http_proxy.
+
+#ansible_http_proxy:
+
+# IP address and port, or URL, for using an https_proxy.
+
+#ansible_https_proxy:
+
+# Exclude IP address or URL from the proxy.
+
+#ansible_no_proxy:

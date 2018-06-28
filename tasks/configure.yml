@@ -1,0 +1,11 @@
+---
+# Role configuration tasks
+
+- block:
+    - name: setup ansible config
+      template:
+        src: ansible.cfg.j2
+        dest: "{{ ansible_config_file }}"
+  tags:
+    - role::ansible
+    - role::ansible::configure

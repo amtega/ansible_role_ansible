@@ -6,8 +6,8 @@
     - role::ansible
     - role::ansible::install
 
-# - name: configure ansible
-#   import_tasks: configure.yml
-#   tags:
-#     - role::ansible
-#     - role::ansible::configure
+- name: configure ansible
+  import_tasks: configure.yml
+  tags:
+    - role::ansible
+    - role::ansible::configure
