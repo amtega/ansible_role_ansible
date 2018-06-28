@@ -1,13 +1,25 @@
 ---
 # Role install tasks
 
-- name: install ansible packages
-  package:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ ansible_packages[distro_packages_key] }}"
+- block:
+    - name: install required operating system packages
+      package:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ ansible_os_packages[distro_packages_key] }}"
+
+    - name: install required python packages
+      pip:
+        name: "{{ item }}"
+        state: present
+        extra_args: "{{ ansible_pip_extra_args }}"
+      loop: "{{ ansible_python_packages[distro_packages_key] }}"
+      environment: "{{ ansible_http_proxy_environment }}"
   vars:
     distro_packages_key: >-
       {{ ansible_facts.distribution
          | lower
          + "_" + ansible_facts.distribution_major_version }}
+  tags:
+    - role::ansible
+    - role::ansible::install

@@ -1,9 +1,15 @@
 ---
 # Role variables
 
-# Packages to install
+# Ansible version for pip tool
 
-ansible_packages:
+ansible_pip_version: >-
+  {{ (ansible_required_version | length >0)
+     | ternary("==" + ansible_required_version, "") }}
+
+# Operating system packages to install
+
+ansible_os_packages:
   debian_9:
     - python-pip
     - python-boto3
@@ -15,6 +21,13 @@ ansible_packages:
     - gobject-introspection
     - libgirepository1.0-dev
     - libcairo2-dev
+    - sshpass
+
+  centos_6:
+    - python-pip
+    - python-passlib
+    - python-psutil
+    - libselinux-python
     - sshpass
 
   centos_7:
@@ -41,6 +54,13 @@ ansible_packages:
     - libselinux-python
     - sshpass
 
+  rhel_6:
+    - python-pip
+    - python-passlib
+    - python-psutil
+    - libselinux-python
+    - sshpass
+
   rhel_7:
     - python-pip
     - python-boto3
@@ -48,3 +68,55 @@ ansible_packages:
     - python-psutil
     - libselinux-python
     - sshpass
+
+# Python packages to install
+
+ansible_python_packages:
+  debian_9:
+    - ansible{{ ansible_pip_version }}
+    - jmespath
+
+  centos_6:
+    - jmespath
+    - setuptools
+    - ansible{{ ansible_pip_version }}
+
+  centos_7:
+    - pip
+    - ansible{{ ansible_pip_version }}
+    - jmespath
+
+  fedora_27:
+    - ansible{{ ansible_pip_version }}
+    - jmespath
+
+  fedora_28:
+    - ansible{{ ansible_pip_version }}
+    - jmespath
+
+  rhel_6:
+    - pip
+    - jmespath
+    - setuptools
+    - ansible{{ ansible_pip_version }}
+
+  rhel_7:
+    - ansible{{ ansible_pip_version }}
+    - jmespath
+
+# Config file
+
+ansible_config_file: /etc/ansible/ansible.cfg
+
+# Proxy environment settings
+
+ansible_http_proxy_config:
+    http_proxy: "{{ tomcat_http_proxy | default('') }}"
+    https_proxy: "{{ tomcat_https_proxy | default('') }}"
+    http_no_proxy: "{{ tomcat_http_no_proxy | default('') }}"
+
+ansible_http_proxy_environment: >-
+  {{ (tomcat_http_proxy is defined
+      or tomcat_https_proxy is defined
+      or tomcat_http_no_proxy is defined)
+     | ternary(tomcat_http_proxy_config, {}) }}
