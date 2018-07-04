@@ -111,12 +111,12 @@ ansible_config_file: /etc/ansible/ansible.cfg
 # Proxy environment settings
 
 ansible_http_proxy_config:
-    http_proxy: "{{ tomcat_http_proxy | default('') }}"
-    https_proxy: "{{ tomcat_https_proxy | default('') }}"
-    http_no_proxy: "{{ tomcat_http_no_proxy | default('') }}"
+    http_proxy: "{{ ansible_http_proxy | default('') }}"
+    https_proxy: "{{ ansible_https_proxy | default('') }}"
+    http_no_proxy: "{{ ansible_http_no_proxy | default('') }}"
 
 ansible_http_proxy_environment: >-
-  {{ (tomcat_http_proxy is defined
-      or tomcat_https_proxy is defined
-      or tomcat_http_no_proxy is defined)
-     | ternary(tomcat_http_proxy_config, {}) }}
+  {{ (ansible_http_proxy is defined
+      or ansible_https_proxy is defined
+      or ansible_http_no_proxy is defined)
+     | ternary(ansible_http_proxy_config, {}) }}
