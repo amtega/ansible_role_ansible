@@ -26,7 +26,8 @@
   hosts: docker_sandbox_containers
   roles:
     - role: amtega.ansible
-      ansible_required_version: 2.5.0
+      ansible_required_version: 2.6.0
+      ansible_defaults_inventory: /etc/ansible/hosts
   tasks:
     - name: get ansible version
       shell: "ansible --version"
@@ -35,7 +36,7 @@
 
     - name: check that ansible version is correct
       assert:
-        that: ansible_version_result.stdout_lines[0] == "ansible 2.5.0"
+        that: ansible_version_result.stdout_lines[0] == "ansible 2.6.0"
 
 - name: cleanup docker docker sandbox
   hosts: localhost
