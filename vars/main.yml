@@ -24,9 +24,13 @@ ansible_os_packages:
     - sshpass
 
   centos_6:
+    - openssl-devel
+    - python-devel
     - python-pip
     - python-passlib
     - python-psutil
+    - gcc
+    - libffi-devel
     - libselinux-python
     - sshpass
 
@@ -55,9 +59,13 @@ ansible_os_packages:
     - sshpass
 
   rhel_6:
+    - openssl-devel
+    - python-devel
     - python-pip
     - python-passlib
     - python-psutil
+    - gcc
+    - libffi-devel
     - libselinux-python
     - sshpass
 
@@ -77,6 +85,7 @@ ansible_python_packages:
     - jmespath
 
   centos_6:
+    - pip<10
     - jmespath
     - setuptools
     - ansible{{ ansible_pip_version }}
@@ -95,7 +104,7 @@ ansible_python_packages:
     - jmespath
 
   rhel_6:
-    - pip
+    - pip<10
     - jmespath
     - setuptools
     - ansible{{ ansible_pip_version }}
