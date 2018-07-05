@@ -1,9 +1,9 @@
 {{ ansible_managed | comment }}
 
-{% macro item(name, join_character=" ") %}
-{% if hostvars[inventory_hostname][name] is defined %}
-{% set value=hostvars[inventory_hostname][name] %}
-{% if value is iterable and value is not string %}}
+{%- macro item(name, join_character=",") %}
+{% set value = lookup("vars", name, default="") %}
+{% if value != "" %}
+{% if value is iterable and value is not string %}
 {{ name }} = {{ value | join(join_character) }}
 {% else %}
 {{ name }} = {{ value }}
@@ -11,6 +11,84 @@
 {% endif %}
 {% endmacro %}
 
+
 [defaults]
 
 {{ item("ansible_defaults_inventory") }}
+{{ item("ansible_defaults_roles_path") }}
+{{ item("ansible_defaults_library") }}
+{{ item("ansible_defaults_module_utils") }}
+{{ item("ansible_defaults_remote_tmp") }}
+{{ item("ansible_defaults_local_tmp") }}
+{{ item("ansible_defaults_plugin_filters_cfg") }}
+{{ item("ansible_defaults_action_plugins") }}
+{{ item("ansible_defaults_cache_plugins") }}
+{{ item("ansible_defaults_callback_plugins") }}
+{{ item("ansible_defaults_connection_plugins") }}
+{{ item("ansible_defaults_lookup_plugins") }}
+{{ item("ansible_defaults_inventory_plugins") }}
+{{ item("ansible_defaults_vars_plugins") }}
+{{ item("ansible_defaults_filter_plugins") }}
+{{ item("ansible_defaults_test_plugins") }}
+{{ item("ansible_defaults_terminal_plugins") }}
+{{ item("ansible_defaults_strategy_plugins") }}
+{{ item("ansible_defaults_forks") }}
+{{ item("ansible_defaults_poll_interval") }}
+{{ item("ansible_defaults_sudo_user") }}
+{{ item("ansible_defaults_ask_sudo_pass") }}
+{{ item("ansible_defaults_ask_pass") }}
+{{ item("ansible_defaults_transport") }}
+{{ item("ansible_defaults_remote_port") }}
+{{ item("ansible_defaults_module_lang") }}
+{{ item("ansible_defaults_module_set_locale") }}
+{{ item("ansible_defaults_gathering") }}
+{{ item("ansible_defaults_gather_subset") }}
+{{ item("ansible_defaults_gather_timeout") }}
+{{ item("ansible_defaults_host_key_checking") }}
+{{ item("ansible_defaults_timeout") }}
+{{ item("ansible_defaults_log_path") }}
+{{ item("ansible_defaults_ansible_managed") }}
+{{ item("ansible_defaults_fact_caching") }}
+{{ item("ansible_defaults_stdout_callback") }}
+{{ item("ansible_defaults_callback_whitelist") }}
+{{ item("ansible_defaults_task_includes_static") }}
+{{ item("ansible_defaults_handler_includes_static") }}
+{{ item("ansible_defaults_error_on_missing_handler") }}
+{{ item("ansible_defaults_sudo_exe") }}
+{{ item("ansible_defaults_sudo_flags") }}
+{{ item("ansible_defaults_remote_user") }}
+{{ item("ansible_defaults_module_name") }}
+{{ item("ansible_defaults_executable") }}
+{{ item("ansible_defaults_hash_behaviour") }}
+{{ item("ansible_defaults_private_role_vars") }}
+{{ item("ansible_defaults_jinja2_extensions") }}
+{{ item("ansible_defaults_private_key_file") }}
+{{ item("ansible_defaults_vault_password_file") }}
+{{ item("ansible_defaults_display_skipped_hosts") }}
+{{ item("ansible_defaults_display_args_to_stdout") }}
+{{ item("ansible_defaults_error_on_undefined_vars") }}
+{{ item("ansible_defaults_system_warnings") }}
+{{ item("ansible_defaults_deprecation_warnings") }}
+{{ item("ansible_defaults_command_warnings") }}
+{{ item("ansible_defaults_strategy") }}
+{{ item("ansible_defaults_bin_ansible_callbacks") }}
+{{ item("ansible_defaults_nocows") }}
+{{ item("ansible_defaults_cow_selection") }}
+{{ item("ansible_defaults_cow_selection") }}
+{{ item("ansible_defaults_cow_whitelist") }}
+{{ item("ansible_defaults_nocolor") }}
+{{ item("ansible_defaults_retry_files_enabled") }}
+{{ item("ansible_defaults_retry_files_save_path") }}
+{{ item("ansible_defaults_squash_actions") }}
+{{ item("ansible_defaults_no_log") }}
+{{ item("ansible_defaults_no_target_syslog") }}
+{{ item("ansible_defaults_allow_world_readable_tmpfiles") }}
+{{ item("ansible_defaults_var_compression_level") }}
+{{ item("ansible_defaults_module_compression") }}
+{{ item("ansible_defaults_max_diff_size") }}
+{{ item("ansible_defaults_merge_multiple_cli_flags") }}
+{{ item("ansible_defaults_show_custom_stats") }}
+{{ item("ansible_defaults_inventory_ignore_extensions") }}
+{{ item("ansible_defaults_network_group_modules") }}
+{{ item("ansible_defaults_allow_unsafe_lookups") }}
+{{ item("ansible_defaults_ansible_defaults_any_errors_fatal") }}
