@@ -245,20 +245,12 @@ ansible_required_version:
 # Extra arguments for the python pip tool to install packages
 #
 
-ansible_pip_extra_args:
+ansible_pip_extra_args: "--upgrade"
 
 #
 # Proxy settings
 #
 
-# IP address and port, or URL, for using an http_proxy.
-
-#ansible_http_proxy:
-
-# IP address and port, or URL, for using an https_proxy.
-
-#ansible_https_proxy:
-
-# Exclude IP address or URL from the proxy.
-
-#ansible_no_proxy:
+ansible_http_proxy: "{{ ansible_facts.env.http_proxy | default('') }}"
+ansible_https_proxy: "{{ ansible_facts.env.https_proxy | default('') }}"
+ansible_no_proxy: "{{ ansible_facts.env.no_proxy | default('') }}"
