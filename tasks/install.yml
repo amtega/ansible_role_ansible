@@ -15,6 +15,36 @@
         extra_args: "{{ ansible_pip_extra_args }}"
       loop: "{{ ansible_python_packages[distro_packages_key] }}"
       environment: "{{ ansible_http_proxy_environment }}"
+
+    - name: create required directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+      loop: "{{ config_directories | reject('equalto', '') | list }}"
+      vars:
+        config_directories:
+          - "{{ ansible_config_file | dirname }}"
+          - "{{ ansible_defaults_inventory | default('') | dirname }}"
+          - "{{ ansible_defaults_roles_path | default('') }}"
+          - "{{ ansible_defaults_library  | default('') }}"
+          - "{{ ansible_defaults_module_utils | default('') }}"
+          - "{{ ansible_defaults_remote_tmp | default('') }}"
+          - "{{ ansible_defaults_local_tmp | default('')  }}"
+          - "{{ ansible_defaults_plugin_filters_cfg | default('') | dirname }}"
+          - "{{ ansible_defaults_action_plugins | default('') }}"
+          - "{{ ansible_defaults_cache_plugins | default('') }}"
+          - "{{ ansible_defaults_callback_plugins | default('') }}"
+          - "{{ ansible_defaults_connection_plugins | default('') }}"
+          - "{{ ansible_defaults_lookup_plugins | default('') }}"
+          - "{{ ansible_defaults_inventory_plugins | default('') }}"
+          - "{{ ansible_defaults_vars_plugins | default('') }}"
+          - "{{ ansible_defaults_filter_plugins | default('') }}"
+          - "{{ ansible_defaults_test_plugins | default('') }}"
+          - "{{ ansible_defaults_terminal_plugins | default('') }}"
+          - "{{ ansible_defaults_strategy_plugins | default('') }}"
   vars:
     distro_packages_key: >-
       {{ ansible_facts.distribution
