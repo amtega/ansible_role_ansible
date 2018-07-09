@@ -1,5 +1,11 @@
 # Role tasks
 
+- name: sanity checks
+  import_tasks: check.yml
+  tags:
+    - role::ansible
+    - role::ansible::check
+
 - name: install ansible
   import_tasks: install.yml
   tags:
