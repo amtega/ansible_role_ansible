@@ -133,6 +133,152 @@ ansible_python_packages:
 
 ansible_config_file: /etc/ansible/ansible.cfg
 
+# Config variables supported for each section
+
+ansible_config_sections:
+  defaults:
+    - ansible_defaults_inventory
+    - ansible_defaults_roles_path
+    - ansible_defaults_library
+    - ansible_defaults_module_utils
+    - ansible_defaults_remote_tmp
+    - ansible_defaults_local_tmp
+    - ansible_defaults_plugin_filters_cfg
+    - ansible_defaults_action_plugins
+    - ansible_defaults_cache_plugins
+    - ansible_defaults_callback_plugins
+    - ansible_defaults_connection_plugins
+    - ansible_defaults_lookup_plugins
+    - ansible_defaults_inventory_plugins
+    - ansible_defaults_vars_plugins
+    - ansible_defaults_filter_plugins
+    - ansible_defaults_test_plugins
+    - ansible_defaults_terminal_plugins
+    - ansible_defaults_strategy_plugins
+    - ansible_defaults_forks
+    - ansible_defaults_poll_interval
+    - ansible_defaults_sudo_user
+    - ansible_defaults_ask_sudo_pass
+    - ansible_defaults_ask_pass
+    - ansible_defaults_transport
+    - ansible_defaults_remote_port
+    - ansible_defaults_module_lang
+    - ansible_defaults_module_set_locale
+    - ansible_defaults_gathering
+    - ansible_defaults_gather_subset
+    - ansible_defaults_gather_timeout
+    - ansible_defaults_host_key_checking
+    - ansible_defaults_timeout
+    - ansible_defaults_log_path
+    - ansible_defaults_ansible_managed
+    - ansible_defaults_fact_caching
+    - ansible_defaults_stdout_callback
+    - ansible_defaults_callback_whitelist
+    - ansible_defaults_task_includes_static
+    - ansible_defaults_handler_includes_static
+    - ansible_defaults_error_on_missing_handler
+    - ansible_defaults_sudo_exe
+    - ansible_defaults_sudo_flags
+    - ansible_defaults_remote_user
+    - ansible_defaults_module_name
+    - ansible_defaults_executable
+    - ansible_defaults_hash_behaviour
+    - ansible_defaults_private_role_vars
+    - ansible_defaults_jinja2_extensions
+    - ansible_defaults_private_key_file
+    - ansible_defaults_vault_password_file
+    - ansible_defaults_display_skipped_hosts
+    - ansible_defaults_display_args_to_stdout
+    - ansible_defaults_error_on_undefined_vars
+    - ansible_defaults_system_warnings
+    - ansible_defaults_deprecation_warnings
+    - ansible_defaults_command_warnings
+    - ansible_defaults_strategy
+    - ansible_defaults_bin_ansible_callbacks
+    - ansible_defaults_nocows
+    - ansible_defaults_cow_selection
+    - ansible_defaults_cow_selection
+    - ansible_defaults_cow_whitelist
+    - ansible_defaults_nocolor
+    - ansible_defaults_retry_files_enabled
+    - ansible_defaults_retry_files_save_path
+    - ansible_defaults_squash_actions
+    - ansible_defaults_no_log
+    - ansible_defaults_no_target_syslog
+    - ansible_defaults_allow_world_readable_tmpfiles
+    - ansible_defaults_var_compression_level
+    - ansible_defaults_module_compression
+    - ansible_defaults_max_diff_size
+    - ansible_defaults_merge_multiple_cli_flags
+    - ansible_defaults_show_custom_stats
+    - ansible_defaults_inventory_ignore_extensions
+    - ansible_defaults_network_group_modules
+    - ansible_defaults_allow_unsafe_lookups
+    - ansible_defaults_ansible_defaults_any_errors_fatal
+
+  inventory:
+    - ansible_inventory_enable_plugins
+    - ansible_inventory_ignore_extensions
+    - ansible_inventory_ignore_patterns
+    - ansible_inventory_unparsed_is_failed
+
+  privilege:
+    - ansible_privilege_escalation_become
+    - ansible_privilege_escalation_become_method
+    - ansible_privilege_escalation_become_user
+    - ansible_privilege_escalation_become_ask_pass
+
+  paramiko:
+    - ansible_paramiko_connection_record_host_keys
+    - ansible_paramiko_connection_pty
+    - ansible_paramiko_connection_look_for_keys
+    - ansible_paramiko_connection_host_key_auto_add
+
+  ssh_connection:
+    - ansible_ssh_connection_ssh_args
+    - ansible_ssh_connection_control_path_dir
+    - ansible_ssh_connection_control_path
+    - ansible_ssh_connection_pipelining
+    - ansible_ssh_connection_scp_if_ssh
+    - ansible_ssh_connection_transfer_method
+    - ansible_ssh_connection_sftp_batch_mode
+    - ansible_ssh_connection_use_tty
+
+  persistent:
+    - ansible_persistent_connection_connect_timeout
+    - ansible_persistent_connection_connect_retry_timeout
+    - ansible_persistent_connection_command_timeout
+
+  accelerate:
+    - ansible_accelerate_port
+    - ansible_accelerate_timeout
+    - ansible_accelerate_connect_timeout
+    - ansible_accelerate_daemon_timeout
+    - ansible_accelerate_multi_key
+
+  selinux:
+    - ansible_selinux_special_context_filesystems
+    - ansible_selinux_libvirt_lxc_noseclabel
+
+  colors:
+    - ansible_colors_highlight
+    - ansible_colors_verbose
+    - ansible_colors_warn
+    - ansible_colors_error
+    - ansible_colors_debug
+    - ansible_colors_deprecate
+    - ansible_colors_skip
+    - ansible_colors_unreachable
+    - ansible_colors_ok
+    - ansible_colors_changed
+    - ansible_colors_diff_add
+    - ansible_colors_diff_remove
+    - ansible_colors_diff_lines
+
+  diff:
+    - ansible_diff_always
+    - ansible_diff_context
+
 # Proxy environment settings
 
 ansible_http_proxy_config:
