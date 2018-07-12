@@ -140,22 +140,22 @@ ansible_required_version:
 #
 
 #ansible_inventory_enable_plugins:
-# - host_list
-# - virtualbox
-# - yaml
-# - constructed
+#  - host_list
+#  - virtualbox
+#  - yaml
+#  - constructed
 #ansible_inventory_ignore_extensions:
-# - .pyc
-# - .pyo
-# - .swp
-# - .bak
-# - .rpm
-# - .md
-# - .txt
-# - .orig
-# - .ini
-# - .cfg
-# - .retry
+#  - .pyc
+#  - .pyo
+#  - .swp
+#  - .bak
+#  - .rpm
+#  - .md
+#  - .txt
+#  - .orig
+#  - .ini
+#  - .cfg
+#  - .retry
 #ansible_inventory_ignore_patterns:
 #ansible_inventory_unparsed_is_failed: false
 
