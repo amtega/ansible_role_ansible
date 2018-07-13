@@ -1,0 +1,20 @@
+---
+# Role configuration tasks
+
+- block:
+    - name: setup ansible config
+      template:
+        src: ansible.cfg.j2
+        dest: "{{ ansible_config_file }}"
+
+    - name: create ansible ssh key
+      user:
+        name: "{{ ansible_user }}"
+        generate_ssh_key: "{{ ansible_ssh_generate_key | default(false) }}"
+        ssh_key_bits: "{{ ansible_ssh_key_bits | default(omit) }}"
+        ssh_key_file: "{{ ansible_ssh_key_file | default(omit) }}"
+        ssh_key_type: "{{ ansible_ssh_key_type | default(omit) }}"
+        ssh_key_passphrase: "{{ ansible_ssh_key_passphrase | default(omit) }}"
+  tags:
+    - role::ansible
+    - role::ansible::configure

@@ -1,0 +1,29 @@
+{{ ansible_managed | comment }}
+{%- macro section(name) %}
+[{{ name }}]
+
+{% for variable in ansible_config_sections[name] %}
+{% set value = lookup("vars", variable, default="") %}
+{% set option = variable | regex_replace("ansible_" + name + "_", "") %}
+{% if value != "" %}
+{% if value is iterable and value is not string %}
+{{ option }} = {{ value | join(",") }}
+{% else %}
+{{ option }} = {{ value }}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% endmacro %}
+
+
+{{ section("defaults") }}
+{{ section("inventory") }}
+{{ section("privilege") }}
+{{ section("paramiko") }}
+{{ section("ssh_connection") }}
+{{ section("persistent") }}
+{{ section("accelerate") }}
+{{ section("selinux") }}
+{{ section("colors") }}
+{{ section("diff") }}
