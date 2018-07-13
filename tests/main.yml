@@ -36,6 +36,12 @@
         - script
         - yaml
         - ini
+      ansible_ssh_generate_key: true
+      ansible_ssh_key_comment: Ansible key
+      ansible_ssh_key_bits: 4096
+      ansible_ssh_key_file: .ssh/id_rsa_ansible
+      ansible_ssh_key_type: rsa
+      ansible_ssh_key_passphrase: rootroot
   tasks:
     - name: get ansible version
       shell: "ansible --version"
@@ -69,6 +75,18 @@
           - >-
             read_config_result.stdout
             is search("enable_plugins = host_list,script,yaml,ini")
+
+    - name: search key file
+      stat:
+        path: "~/.ssh/id_rsa_ansible"
+      register: check_key_result
+
+    - name: check key file exist
+      assert:
+        that:
+          - check_key_result.stat.exists
+  tags:
+    - idempotence
 
 - name: cleanup docker docker sandbox
   hosts: localhost

@@ -242,6 +242,17 @@ ansible_required_version:
 # ansible_diff_context: 3
 
 #
+# SSH key generation config
+#
+
+ansible_ssh_generate_key: true
+ansible_ssh_key_comment: Ansible key
+ansible_ssh_key_bits: 2048
+ansible_ssh_key_file: .ssh/id_rsa_ansible
+ansible_ssh_key_type: rsa
+# ansible_ssh_key_passphrase:
+
+#
 # Extra arguments for the python pip tool to install packages
 #
 
