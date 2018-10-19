@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: ansible
   author: Juan Antonio Valiño García
   description: Provisione an ansible control machine
   company: AMTEGA - Xunta de Galicia
