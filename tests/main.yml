@@ -18,7 +18,7 @@
   hosts: localhost
   roles:
     - role: amtega.docker_sandbox
-      vagrant_sandbox_state: started
+      docker_sandbox_state: started
   tags:
     - sandbox
 
