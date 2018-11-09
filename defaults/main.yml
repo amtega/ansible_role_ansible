@@ -8,7 +8,7 @@
 ansible_required_version:
 
 #
-# Ansible defaults config options. See ansible documentation for details
+# Ansible default config options. See ansible documentation for details
 #
 
 #ansible_defaults_inventory: /etc/ansible/hosts
@@ -43,7 +43,7 @@ ansible_required_version:
 #ansible_defaults_gather_timeout: 10
 #ansible_defaults_host_key_checking: false
 #ansible_defaults_timeout: 10
-#ansible_defaults_log_path: /var/log/ansible.log
+#ansible_defaults_log_path: /var/log/inject_facts_as_varsansible.log
 #ansible_defaults_ansible_managed: Ansible managed
 #ansible_defaults_fact_caching: memory
 #ansible_defaults_stdout_callback: skippy
@@ -134,6 +134,8 @@ ansible_required_version:
 #  - vyos
 #ansible_defaults_allow_unsafe_lookups: false
 #ansible_defaults_ansible_defaults_any_errors_fatal: false
+#ansible_defaults_inject_facts_as_vars: true
+#ansible_defaults_jinja2_native: false
 
 #
 # Ansible inventory config options. See ansible documentation for details

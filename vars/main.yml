@@ -215,6 +215,8 @@ ansible_config_sections:
     - ansible_defaults_network_group_modules
     - ansible_defaults_allow_unsafe_lookups
     - ansible_defaults_ansible_defaults_any_errors_fatal
+    - ansible_defaults_inject_facts_as_vars
+    - ansible_defaults_jinja2_native
 
   inventory:
     - ansible_inventory_enable_plugins
