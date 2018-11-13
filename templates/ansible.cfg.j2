@@ -5,8 +5,8 @@
 {% for variable in ansible_config_sections[name] %}
 {% set value = lookup("vars", variable, default="") %}
 {% set option = variable | regex_replace("ansible_" + name + "_", "") %}
-{% if value != "" %}
-{% if value is iterable and value is not string %}
+{% if value != "" and value is not none %}
+{% if value is iterable and value is not string and value | length > 0 %}
 {{ option }} = {{ value | join(",") }}
 {% else %}
 {{ option }} = {{ value }}
