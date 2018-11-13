@@ -1,133 +1,78 @@
 ---
 # Role variables
 
-# Supported distributions
-
-ansible_supported_distributions:
-  - centos
-  - debian
-  - fedora
-  - rhel
-
-# Supported distributions versions
-
-ansible_supported_versions:
-  centos: 6
-  debian: 9
-  fedora: 27
-  rhel: 6
-
 # Ansible version for pip tool
 
 ansible_pip_version: >-
   {{ (ansible_required_version | length >0)
      | ternary("==" + ansible_required_version, "") }}
 
-# Operating system packages to install
+# OS packages
 
-ansible_os_packages:
-  debian_9:
-    - python-pip
-    - python-boto3
-    - python-passlib
-    - python-psutil
-    - python-selinux
-    - pkg-config
-    - libglib2.0-dev
-    - gobject-introspection
-    - libgirepository1.0-dev
-    - libcairo2-dev
-    - sshpass
+ansible_packages_os:
+  centos:
+    all:
+      python-pip: present
+      python-passlib: present
+      python-psutil: present
+      python-boto3: present
+      libselinux-python: present
+      sshpass: present
+  debian:
+    all:
+      python-pip: present
+      python-boto3: present
+      python-passlib: present
+      python-psutil: present
+      python-selinux: present
+      pkg-config: present
+      libglib2.0-dev: present
+      gobject-introspection: present
+      libgirepository1.0-dev: present
+      libcairo2-dev: present
+      sshpass: present
+  fedora:
+    all:
+      python-pip: present
+      python-boto3: present
+      python-passlib: present
+      python-psutil: present
+      libselinux-python: present
+      sshpass: present
+  rhel:
+    all:
+      python-pip: present
+      python-passlib: present
+      python-psutil: present
+      python-boto3: present
+      libselinux-python: present
+      sshpass: present
 
-  centos_6:
-    - openssl-devel
-    - python-devel
-    - python-pip
-    - python-passlib
-    - python-psutil
-    - gcc
-    - libffi-devel
-    - libselinux-python
-    - sshpass
+# Pyton packages
 
-  centos_7:
-    - python-pip
-    - python-boto3
-    - python-passlib
-    - python-psutil
-    - libselinux-python
-    - sshpass
-
-  fedora_27:
-    - python-pip
-    - python-boto3
-    - python-passlib
-    - python-psutil
-    - libselinux-python
-    - sshpass
-
-  fedora_28:
-    - python-pip
-    - python-boto3
-    - python-passlib
-    - python-psutil
-    - libselinux-python
-    - sshpass
-
-  rhel_6:
-    - openssl-devel
-    - python-devel
-    - python-pip
-    - python-passlib
-    - python-psutil
-    - gcc
-    - libffi-devel
-    - libselinux-python
-    - sshpass
-
-  rhel_7:
-    - python-pip
-    - python-boto3
-    - python-passlib
-    - python-psutil
-    - libselinux-python
-    - sshpass
-
-# Python packages to install
-
-ansible_python_packages:
-  debian_9:
-    - ansible{{ ansible_pip_version }}
-    - jmespath
-
-  centos_6:
-    - pip<10
-    - jmespath
-    - setuptools
-    - ansible{{ ansible_pip_version }}
-
-  centos_7:
-    - pip
-    - ansible{{ ansible_pip_version }}
-    - jmespath
-
-  fedora_27:
-    - ansible{{ ansible_pip_version }}
-    - jmespath
-
-  fedora_28:
-    - ansible{{ ansible_pip_version }}
-    - jmespath
-
-  rhel_6:
-    - pip<10
-    - jmespath
-    - setuptools
-    - ansible{{ ansible_pip_version }}
-
-  rhel_7:
-    - ansible{{ ansible_pip_version }}
-    - jmespath
+ansible_packages_python:
+  debian:
+    all:
+      - jmespath: present
+      - name: "ansible{{ ansible_pip_version }}"
+        state: present
+  centos:
+    all:
+      - pip: present
+      - jmespath: present
+      - name: "ansible{{ ansible_pip_version }}"
+        state: present
+  fedora:
+    all:
+      - jmespath: present
+      - name: "ansible{{ ansible_pip_version }}"
+        state: present
+  rhel:
+    all:
+      - pip: present
+      - jmespath: present
+      - name: "ansible{{ ansible_pip_version }}"
+        state: present
 
 # Config file
 
@@ -280,16 +225,3 @@ ansible_config_sections:
   diff:
     - ansible_diff_always
     - ansible_diff_context
-
-# Proxy environment settings
-
-ansible_http_proxy_config:
-    http_proxy: "{{ ansible_http_proxy | default('') }}"
-    https_proxy: "{{ ansible_https_proxy | default('') }}"
-    http_no_proxy: "{{ ansible_http_no_proxy | default('') }}"
-
-ansible_http_proxy_environment: >-
-  {{ (ansible_http_proxy is defined
-      or ansible_https_proxy is defined
-      or ansible_http_no_proxy is defined)
-     | ternary(ansible_http_proxy_config, {}) }}

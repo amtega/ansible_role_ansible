@@ -1,4 +1,4 @@
-# Ansible docker_presets role
+# Ansible role
 
 This is an [Ansible](http://www.ansible.com) role to setup an ansible control machine.
 
@@ -12,7 +12,8 @@ A list of all the default variables for this role is available in `defaults/main
 
 ## Dependencies
 
-N/A
+- [amtega.check_platform](https://galaxy.ansible.com/amtega/check_platform)
+- [amtega.packages](https://galaxy.ansible.com/amtega/packages)
 
 ## Example Playbook
 
