@@ -25,7 +25,7 @@ This is an example playbook:
 - hosts: all
   roles:
     - role: amtega.ansible
-      ansible_version: 2.7.0  
+      ansible_required_version: 2.7.0  
 ```
 
 ## Testing
