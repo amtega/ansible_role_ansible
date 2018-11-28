@@ -4,7 +4,8 @@
 # Ansible version for pip tool
 
 ansible_pip_version: >-
-  {{ (ansible_required_version | length >0)
+  {{ (ansible_required_version is not none
+      and ansible_required_version | length >0)
      | ternary("==" + ansible_required_version, "") }}
 
 # OS packages
@@ -12,71 +13,57 @@ ansible_pip_version: >-
 ansible_packages_os:
   centos:
     all:
+      ansible: absent
+      libselinux-python: present
+      python-boto3: present
+      python-jmespath: present
       python-pip: present
       python-passlib: present
       python-psutil: present
-      python-boto3: present
-      libselinux-python: present
       sshpass: present
   debian:
     all:
+      ansible: absent
+      gobject-introspection: present
+      libcairo2-dev: present
+      libgirepository1.0-dev: present
+      libglib2.0-dev: present
+      pkg-config: present
       python-pip: present
       python-boto3: present
+      python-jmespath: present
       python-passlib: present
       python-psutil: present
       python-selinux: present
-      pkg-config: present
-      libglib2.0-dev: present
-      gobject-introspection: present
-      libgirepository1.0-dev: present
-      libcairo2-dev: present
       sshpass: present
   fedora:
     all:
+      ansible: absent
+      libselinux-python: present
       python-pip: present
       python-boto3: present
+      python-jmespath: present
       python-passlib: present
       python-psutil: present
-      libselinux-python: present
       sshpass: present
   rhel:
     all:
-      python-pip: present
+      ansible: absent
+      libselinux-python: present
+      python-pip: pre sent
+      python-boto3: present
+      python-jmespath: present
       python-passlib: present
       python-psutil: present
-      python-boto3: present
-      libselinux-python: present
       sshpass: present
 
 # Pyton packages
 
 ansible_packages_python:
-  debian:
+  all:
     all:
-      - jmespath: present
       - name: "ansible{{ ansible_pip_version }}"
         state: present
-  centos:
-    all:
-      - pip: present
-      - jmespath: present
-      - name: "ansible{{ ansible_pip_version }}"
-        state: present
-  fedora:
-    all:
-      - jmespath: present
-      - name: "ansible{{ ansible_pip_version }}"
-        state: present
-  rhel:
-    all:
-      - pip: present
-      - jmespath: present
-      - name: "ansible{{ ansible_pip_version }}"
-        state: present
-
-# Config file
-
-ansible_config_file: /etc/ansible/ansible.cfg
 
 # Config variables supported for each section
 
