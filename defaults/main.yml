@@ -2,7 +2,7 @@
 # ansible default lower priority variables
 
 #
-# Ansible version to install. If empty latest version will be installed
+# Ansible version to install.
 #
 
 ansible_required_version:
@@ -181,6 +181,10 @@ ansible_colors_diff_lines:
 
 ansible_diff_always:
 ansible_diff_context:
+
+# Config file
+
+ansible_config_file: /etc/ansible/ansible.cfg
 
 #
 # SSH key generation config

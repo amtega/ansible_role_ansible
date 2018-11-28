@@ -1,29 +1,37 @@
 {{ ansible_managed | comment }}
+
 {%- macro section(name) %}
+{%- set ns = namespace(options=[]) %}
+{%- for variable in ansible_config_sections[name] | sort %}
+{%- set value = lookup("vars", variable, default="") %}
+{%- set option = variable | regex_replace("ansible_" + name + "_", "") %}
+{%- if value != "" and value is not none %}
+{%- if value is iterable and value is not string %}
+{%- if value | length > 0 %}
+{%- set ns.options = ns.options + [ { option: value | join(",") } ] %}
+{%- endif %}
+{%- else %}
+{%- set ns.options = ns.options + [ { option: value } ] %}
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if ns.options | length > 0 %}
+
 [{{ name }}]
 
-{% for variable in ansible_config_sections[name] %}
-{% set value = lookup("vars", variable, default="") %}
-{% set option = variable | regex_replace("ansible_" + name + "_", "") %}
-{% if value != "" and value is not none %}
-{% if value is iterable and value is not string and value | length > 0 %}
-{{ option }} = {{ value | join(",") }}
-{% else %}
-{{ option }} = {{ value }}
-{% endif %}
-{% endif %}
+{% for option in ns.options %}
+{{ option.keys()[0] }} = {{ option.values()[0] }}
 {% endfor %}
-
-{% endmacro %}
-
+{%- endif %}
+{%- endmacro %}
 
 {{ section("defaults") }}
-{{ section("inventory") }}
-{{ section("privilege") }}
-{{ section("paramiko") }}
-{{ section("ssh_connection") }}
-{{ section("persistent") }}
-{{ section("accelerate") }}
-{{ section("selinux") }}
-{{ section("colors") }}
-{{ section("diff") }}
+{{- section("inventory") }}
+{{- section("privilege") }}
+{{- section("paramiko") }}
+{{- section("ssh_connection") }}
+{{- section("persistent") }}
+{{- section("accelerate") }}
+{{- section("selinux") }}
+{{- section("colors") }}
+{{- section("diff") }}
