@@ -43,6 +43,9 @@
       - "{{ ansible_defaults_test_plugins }}"
       - "{{ ansible_defaults_terminal_plugins }}"
       - "{{ ansible_defaults_strategy_plugins }}"
+      - "{{ ansible_defaults_log_path | dirname
+            if ansible_defaults_log_path is not none
+            else none }}"
   tags:
     - role::ansible
     - role::ansible::install
