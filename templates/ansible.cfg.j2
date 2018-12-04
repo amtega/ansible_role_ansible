@@ -11,7 +11,7 @@
 {%- set ns.options = ns.options + [ { option: value | join(",") } ] %}
 {%- endif %}
 {%- else %}
-{%- set ns.options = ns.options + [ { option: value } ] %}
+{%- set ns.options = ns.options + [ { option: value | string } ] %}
 {%- endif %}
 {%- endif %}
 {%- endfor %}
