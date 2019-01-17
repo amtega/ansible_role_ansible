@@ -17,6 +17,7 @@ ansible_packages_os:
       libselinux-python: present
       python-boto3: present
       python-jmespath: present
+      python-netaddr: present
       python-pip: present
       python-passlib: present
       python-psutil: present
@@ -32,6 +33,7 @@ ansible_packages_os:
       python-pip: present
       python-boto3: present
       python-jmespath: present
+      python-netaddr: present
       python-passlib: present
       python-psutil: present
       python-selinux: present
@@ -43,6 +45,7 @@ ansible_packages_os:
       python-pip: present
       python-boto3: present
       python-jmespath: present
+      python-netaddr: present
       python-passlib: present
       python-psutil: present
       sshpass: present
@@ -53,6 +56,7 @@ ansible_packages_os:
       python-pip: pre sent
       python-boto3: present
       python-jmespath: present
+      python-netaddr: present
       python-passlib: present
       python-psutil: present
       sshpass: present
