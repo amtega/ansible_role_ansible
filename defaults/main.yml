@@ -58,7 +58,10 @@ ansible_defaults_module_name:
 ansible_defaults_executable:
 ansible_defaults_hash_behaviour:
 ansible_defaults_private_role_vars:
-ansible_defaults_jinja2_extensions: []
+ansible_defaults_jinja2_extensions:
+  - jinja2.ext.do
+  - jinja2.ext.i18n
+  - jinja2.ext.loopcontrols
 ansible_defaults_private_key_file:
 ansible_defaults_vault_password_file:
 ansible_defaults_display_skipped_hosts:
