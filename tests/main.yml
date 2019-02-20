@@ -73,7 +73,7 @@
             is search("forks = 5")
           - >-
             read_config_result.stdout
-            is search("enable_plugins = host_list,script,yaml,ini")
+            is search("enable_plugins = host_list, script, yaml, ini")
 
     - name: search key file
       stat:

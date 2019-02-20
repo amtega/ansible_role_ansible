@@ -2,10 +2,10 @@
 # ansible default lower priority variables
 
 #
-# Ansible version to install.
+# Ansible version to install. If not defined no package will be installed
 #
 
-ansible_required_version:
+#ansible_required_version:
 
 #
 # Ansible default config options. See ansible documentation for details

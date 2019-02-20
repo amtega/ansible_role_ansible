@@ -32,3 +32,6 @@ dependencies:
   - role: amtega.packages
     packages_os: "{{ ansible_packages_os }}"
     packages_python: "{{ ansible_packages_python }}"
+    when:
+      - ansible_required_version is defined
+      - ansible_required_version is not none
