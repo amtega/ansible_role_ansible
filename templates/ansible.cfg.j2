@@ -20,7 +20,7 @@
 [{{ name }}]
 
 {% for option in ns.options %}
-{{ option.keys()[0] }} = {{ option.values()[0] }}
+{{ (option.keys() | list)[0] }} = {{ (option.values() | list)[0] }}
 {% endfor %}
 {%- endif %}
 {%- endmacro %}
