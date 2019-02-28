@@ -28,6 +28,8 @@ dependencies:
       debian: 9
       fedora: 27
       rhel: 7
+    tags:
+      - role::ansible
 
   - role: amtega.packages
     packages_os: "{{ ansible_packages_os }}"
@@ -35,3 +37,5 @@ dependencies:
     when:
       - ansible_required_version is defined
       - ansible_required_version is not none
+    tags:
+      - role::ansible
