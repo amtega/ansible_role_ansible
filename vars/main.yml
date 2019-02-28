@@ -7,7 +7,7 @@ ansible_pip_version: >-
   {{ (ansible_required_version is not none
       and ansible_required_version is defined
       and ansible_required_version | length > 0)
-     | ternary("==" + ansible_required_version, "") }}
+     | ternary("==" + ansible_required_version | default(""), "") }}
 
 # OS packages
 
