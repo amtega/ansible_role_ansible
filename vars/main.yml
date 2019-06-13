@@ -19,7 +19,6 @@ ansible_packages_os:
       python-boto3: present
       python-jmespath: present
       python-netaddr: present
-      python-pip: present
       python-passlib: present
       python-psutil: present
       sshpass: present
@@ -31,7 +30,6 @@ ansible_packages_os:
       libgirepository1.0-dev: present
       libglib2.0-dev: present
       pkg-config: present
-      python-pip: present
       python-boto3: present
       python-jmespath: present
       python-netaddr: present
@@ -43,18 +41,16 @@ ansible_packages_os:
     all:
       ansible: absent
       libselinux-python: present
-      python-pip: present
-      python-boto3: present
-      python-jmespath: present
-      python-netaddr: present
-      python-passlib: present
-      python-psutil: present
+      python3-boto3: present
+      python3-jmespath: present
+      python3-netaddr: present
+      python3-passlib: present
+      python3-psutil: present
       sshpass: present
   rhel:
     all:
       ansible: absent
       libselinux-python: present
-      python-pip: pre sent
       python-boto3: present
       python-jmespath: present
       python-netaddr: present

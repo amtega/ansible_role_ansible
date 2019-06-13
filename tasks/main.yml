@@ -1,12 +1,12 @@
 # Role tasks
 
-- name: install ansible
+- name: Install ansible
   import_tasks: install.yml
   tags:
     - role::ansible
     - role::ansible::install
 
-- name: configure ansible
+- name: Configure ansible
   import_tasks: configure.yml
   tags:
     - role::ansible
