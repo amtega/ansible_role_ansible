@@ -2,19 +2,19 @@
 # Role configuration tasks
 
 - block:
-    - name: setup ansible config
+    - name: Setup ansible config
       template:
         src: ansible.cfg.j2
         dest: "{{ ansible_config_file }}"
 
     - block:
-        - name: setup directory for ssh key
+        - name: Setup directory for ssh key
           file:
             path: "{{ ansible_ssh_key_file | dirname }}"
             state: directory
             mode: 0700
 
-        - name: create ansible ssh key
+        - name: Create ansible ssh key
           user:
             name: "{{ ansible_user }}"
             generate_ssh_key: "{{ ansible_ssh_generate_key }}"
@@ -24,7 +24,7 @@
             ssh_key_passphrase: >-
               {{ (ansible_ssh_key_passphrase is not none)
                  | ternary(ansible_ssh_key_passphrase, omit) }}
-      when: ansible_ssh_generate_key
+      when: ansible_ssh_generate_key | bool
   tags:
     - role::ansible
     - role::ansible::configure
