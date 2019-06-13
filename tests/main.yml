@@ -1,19 +1,18 @@
 ---
 # Tasks for testing role
 
-- name: configure docker sandbox environment
+- name: Configure docker sandbox environment
   hosts: localhost
   roles:
     - role: amtega.docker_presets
       docker_presets_images_json_query: >-
         [? starts_with(name, `centos-7`)
-           || starts_with(name, `debian-9`)
-           || starts_with(name, `fedora-27`)
-           || starts_with(name, `fedora-28`) ]
+           || starts_with(name, `fedora-29`)
+           || starts_with(name, `fedora-30`) ]
   tags:
     - sandbox
 
-- name: run idempotence test
+- name: Run idempotence test
   hosts: localhost
   roles:
     - role: amtega.docker_sandbox
@@ -21,7 +20,7 @@
   tags:
     - sandbox
 
-- name: test ansible role
+- name: Test ansible role
   hosts: docker_sandbox_containers
   roles:
     - role: amtega.ansible
@@ -42,21 +41,21 @@
       ansible_ssh_key_type: rsa
       ansible_ssh_key_passphrase: rootroot
   tasks:
-    - name: get ansible version
-      shell: "ansible --version"
+    - name: Get ansible version
+      shell: "{{ packages_python_bin_dir }}ansible --version"
       changed_when: false
       register: ansible_version_result
 
-    - name: check that ansible version is correct
+    - name: Check that ansible version is correct
       assert:
         that: ansible_version_result.stdout_lines[0] == "ansible 2.6.0"
 
-    - name: read ansible config file
+    - name: Read ansible config file
       shell: cat {{ ansible_config_file }}
       changed_when: false
       register: read_config_result
 
-    - name: verify config file content
+    - name: Verify config file content
       assert:
         that:
           - >-
@@ -75,7 +74,7 @@
             read_config_result.stdout
             is search("enable_plugins = host_list, script, yaml, ini")
 
-    - name: search key file
+    - name: Search key file
       stat:
         path: "~/.ssh/id_rsa_ansible"
       register: check_key_result
@@ -87,7 +86,7 @@
   tags:
     - idempotence
 
-- name: cleanup docker docker sandbox
+- name: Cleanup docker docker sandbox
   hosts: localhost
   roles:
     - role: amtega.docker_sandbox
