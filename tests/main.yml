@@ -5,10 +5,11 @@
   hosts: localhost
   roles:
     - role: amtega.docker_presets
-      docker_presets_images_json_query: >-
-        [? starts_with(name, `centos-7`)
-           || starts_with(name, `fedora-29`)
-           || starts_with(name, `fedora-30`) ]
+      vars:
+        docker_presets_images_json_query: >-
+          [? starts_with(name, `centos-7`)
+             || starts_with(name, `fedora-29`)
+             || starts_with(name, `fedora-30`) ]
   tags:
     - sandbox
 
@@ -24,22 +25,23 @@
   hosts: docker_sandbox_containers
   roles:
     - role: amtega.ansible
-      ansible_required_version: 2.6.0
-      ansible_defaults_inventory: /etc/ansible/hosts
-      ansible_defaults_roles_path: /etc/ansible/roles
-      ansible_defaults_remote_tmp: /root/.ansible/tmp
-      ansible_defaults_forks: 5
-      ansible_inventory_enable_plugins:
-        - host_list
-        - script
-        - yaml
-        - ini
-      ansible_ssh_generate_key: true
-      ansible_ssh_key_comment: Ansible key
-      ansible_ssh_key_bits: 4096
-      ansible_ssh_key_file: .ssh/id_rsa_ansible
-      ansible_ssh_key_type: rsa
-      ansible_ssh_key_passphrase: rootroot
+      vars:
+        ansible_required_version: 2.6.0
+        ansible_defaults_inventory: /etc/ansible/hosts
+        ansible_defaults_roles_path: /etc/ansible/roles
+        ansible_defaults_remote_tmp: /root/.ansible/tmp
+        ansible_defaults_forks: 5
+        ansible_inventory_enable_plugins:
+          - host_list
+          - script
+          - yaml
+          - ini
+        ansible_ssh_generate_key: true
+        ansible_ssh_key_comment: Ansible key
+        ansible_ssh_key_bits: 4096
+        ansible_ssh_key_file: .ssh/id_rsa_ansible
+        ansible_ssh_key_type: rsa
+        ansible_ssh_key_passphrase: rootroot
   tasks:
     - name: Get ansible version
       shell: "{{ packages_python_bin_dir }}ansible --version"
@@ -90,7 +92,8 @@
   hosts: localhost
   roles:
     - role: amtega.docker_sandbox
-      docker_sandbox_state: absent
+      vars:
+        docker_sandbox_state: absent
   tags:
     - cleanup
     - sandbox
