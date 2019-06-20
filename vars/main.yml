@@ -14,7 +14,6 @@ ansible_pip_version: >-
 ansible_packages_os:
   centos:
     all:
-      ansible: absent
       libselinux-python: present
       python-boto3: present
       python-jmespath: present
@@ -24,7 +23,6 @@ ansible_packages_os:
       sshpass: present
   debian:
     all:
-      ansible: absent
       gobject-introspection: present
       libcairo2-dev: present
       libgirepository1.0-dev: present
@@ -39,7 +37,6 @@ ansible_packages_os:
       sshpass: present
   fedora:
     all:
-      ansible: absent
       libselinux-python: present
       python3-boto3: present
       python3-jmespath: present
@@ -49,7 +46,6 @@ ansible_packages_os:
       sshpass: present
   rhel:
     all:
-      ansible: absent
       libselinux-python: present
       python-boto3: present
       python-jmespath: present
