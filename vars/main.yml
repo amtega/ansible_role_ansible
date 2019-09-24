@@ -61,6 +61,7 @@ ansible_packages_python:
     all:
       - name: "ansible{{ ansible_pip_version }}"
         state: present
+        extra_args: --upgrade
 
 # Config variables supported for each section
 
