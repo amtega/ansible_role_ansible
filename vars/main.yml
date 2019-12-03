@@ -37,7 +37,7 @@ ansible_packages_os:
       sshpass: present
   fedora:
     all:
-      libselinux-python: present
+      python3-libselinux: present
       python3-boto3: present
       python3-jmespath: present
       python3-netaddr: present
