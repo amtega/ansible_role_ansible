@@ -21,20 +21,6 @@ ansible_packages_os:
       python-passlib: present
       python-psutil: present
       sshpass: present
-  debian:
-    all:
-      gobject-introspection: present
-      libcairo2-dev: present
-      libgirepository1.0-dev: present
-      libglib2.0-dev: present
-      pkg-config: present
-      python-boto3: present
-      python-jmespath: present
-      python-netaddr: present
-      python-passlib: present
-      python-psutil: present
-      python-selinux: present
-      sshpass: present
   fedora:
     all:
       python3-libselinux: present
@@ -44,6 +30,10 @@ ansible_packages_os:
       python3-passlib: present
       python3-psutil: present
       sshpass: present
+    29:
+      libselinux-python: present
+    30:
+      libselinux-python: present
   rhel:
     all:
       libselinux-python: present
