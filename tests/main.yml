@@ -81,7 +81,7 @@
         path: "~/.ssh/id_rsa_ansible"
       register: check_key_result
 
-    - name: check key file exist
+    - name: Check key file exist
       assert:
         that:
           - check_key_result.stat.exists
