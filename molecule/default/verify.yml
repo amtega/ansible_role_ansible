@@ -1,0 +1,48 @@
+---
+
+- name: Verify
+  hosts: molecule_hosts
+  gather_facts: yes
+  tasks:
+    - name: Get ansible version
+      shell: /var/lib/ansible/venv/bin/ansible --version
+      changed_when: false
+      register: ansible_version_result
+
+    - name: Check that ansible version is correct
+      assert:
+        that: ansible_version_result.stdout_lines[0] == "ansible 2.6.0"
+
+    - name: Read ansible config file
+      shell: cat {{ ansible_config_file }}
+      changed_when: false
+      register: read_config_result
+
+    - name: Verify config file content
+      assert:
+        that:
+          - >-
+            read_config_result.stdout
+            is search("inventory = /etc/ansible/hosts")
+          - >-
+            read_config_result.stdout
+            is search("roles_path = /etc/ansible/roles")
+          - >-
+            read_config_result.stdout
+            is search("remote_tmp = /root/.ansible/tmp")
+          - >-
+            read_config_result.stdout
+            is search("forks = 5")
+          - >-
+            read_config_result.stdout
+            is search("enable_plugins = host_list, script, yaml, ini")
+
+    - name: Search key file
+      stat:
+        path: "~/.ssh/id_rsa_ansible"
+      register: check_key_result
+
+    - name: Check key file exist
+      assert:
+        that:
+          - check_key_result.stat.exists
