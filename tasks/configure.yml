@@ -16,7 +16,7 @@
 
         - name: Create ansible ssh key
           user:
-            name: "{{ ansible_user }}"
+            name: "{{ ansible_user | default('root') }}"
             generate_ssh_key: "{{ ansible_ssh_generate_key }}"
             ssh_key_bits: "{{ ansible_ssh_key_bits }}"
             ssh_key_file: "{{ ansible_ssh_key_file }}"
