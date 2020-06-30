@@ -33,7 +33,7 @@ ansible_packages_os:
       python3-netaddr: present
       python3-passlib: present
       python3-psutil: present
-  rhel:
+  redhat:
     all:
       python-boto3: present
       python-jmespath: present
