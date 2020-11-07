@@ -5,7 +5,7 @@
   gather_facts: yes
   tasks:
     - name: Get ansible version
-      shell: /var/lib/ansible/venv/bin/ansible --version
+      command: /var/lib/ansible/venv/bin/ansible --version
       changed_when: false
       register: ansible_version_result
 
@@ -14,7 +14,7 @@
         that: ansible_version_result.stdout_lines[0] == "ansible 2.6.0"
 
     - name: Read ansible config file
-      shell: cat {{ ansible_config_file }}
+      command: cat {{ ansible_config_file }}
       changed_when: false
       register: read_config_result
 
