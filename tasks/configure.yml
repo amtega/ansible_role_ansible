@@ -6,6 +6,9 @@
       template:
         src: ansible.cfg.j2
         dest: "{{ ansible_config_file }}"
+        owner: root
+        group: root
+        mode: 0644
 
     - block:
         - name: Setup directory for ssh key

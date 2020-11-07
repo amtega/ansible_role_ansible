@@ -14,16 +14,34 @@ ansible_pip_version: >-
 ansible_packages_os:
   all:
     all:
-      libselinux-python: present
+      gcc: present
       openssh: present
       sshpass: present
+
   centos:
-    all:
+    6:
+      libselinux-python: present
       python-boto3: present
       python-jmespath: present
       python-netaddr: present
       python-passlib: present
       python-psutil: present
+
+    7:
+      libselinux-python: present
+      python-boto3: present
+      python-jmespath: present
+      python-netaddr: present
+      python-passlib: present
+      python-psutil: present
+
+    8:
+      python3-libselinux: present
+      python3-boto3: present
+      python3-jmespath: present
+      python3-netaddr: present
+      python3-passlib: present
+      python3-psutil: present
 
   fedora:
     all:
@@ -33,13 +51,31 @@ ansible_packages_os:
       python3-netaddr: present
       python3-passlib: present
       python3-psutil: present
+
   redhat:
-    all:
+    6:
+      libselinux-python: present
       python-boto3: present
       python-jmespath: present
       python-netaddr: present
       python-passlib: present
       python-psutil: present
+
+    7:
+      libselinux-python: present
+      python-boto3: present
+      python-jmespath: present
+      python-netaddr: present
+      python-passlib: present
+      python-psutil: present
+
+    8:
+      python3-libselinux: present
+      python3-boto3: present
+      python3-jmespath: present
+      python3-netaddr: present
+      python3-passlib: present
+      python3-psutil: present
 
 # Pyton packages
 
