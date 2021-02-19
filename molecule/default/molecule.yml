@@ -77,7 +77,7 @@ provisioner:
           ansible_ssh_key_file: .ssh/id_rsa_ansible
           ansible_ssh_key_type: rsa
           ansible_ssh_key_passphrase: rootroot
-          ansible_config_file: /etc/ansible/ansible.cfg
+          ansible_config_file_path: /etc/ansible/ansible.cfg
       molecule_hosts_fedora:
         vars:
           ansible_python_interpreter: /usr/bin/python3

@@ -5,7 +5,7 @@
     - name: Setup ansible config
       template:
         src: ansible.cfg.j2
-        dest: "{{ ansible_config_file }}"
+        dest: "{{ ansible_config_file_path }}"
         owner: root
         group: root
         mode: 0644
