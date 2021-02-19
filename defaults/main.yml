@@ -187,7 +187,7 @@ ansible_diff_context:
 
 # Config file
 
-ansible_config_file: /etc/ansible/ansible.cfg
+ansible_config_file_path: /etc/ansible/ansible.cfg
 
 #
 # SSH key generation config

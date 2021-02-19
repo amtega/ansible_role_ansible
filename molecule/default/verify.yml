@@ -14,7 +14,7 @@
         that: ansible_version_result.stdout_lines[0] == "ansible 2.6.0"
 
     - name: Read ansible config file
-      command: cat {{ ansible_config_file }}
+      command: cat {{ ansible_config_file_path }}
       changed_when: false
       register: read_config_result
 

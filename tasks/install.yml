@@ -14,8 +14,8 @@
   vars:
     config_directories:
       - >-
-        {{ ansible_config_file | dirname
-           if ansible_config_file is not none
+        {{ ansible_config_file_path | dirname
+           if ansible_config_file_path is not none
            else none }}
       - >-
         {{ ansible_defaults_inventory | dirname
