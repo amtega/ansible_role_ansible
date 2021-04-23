@@ -6,8 +6,6 @@
       template:
         src: ansible.cfg.j2
         dest: "{{ ansible_config_file_path }}"
-        owner: root
-        group: root
         mode: 0644
 
     - block:
