@@ -13,6 +13,7 @@
 
 ansible_defaults_inventory:
 ansible_defaults_roles_path:
+ansible_defaults_collections_paths:
 ansible_defaults_library:
 ansible_defaults_module_utils:
 ansible_defaults_remote_tmp:
