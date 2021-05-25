@@ -21,7 +21,7 @@ ansible_defaults_local_tmp:
 ansible_defaults_plugin_filters_cfg:
 ansible_defaults_action_plugins:
 ansible_defaults_cache_plugins:
-ansible_defaults_callback_plugins:
+ansible_defaults_callback_enabled:
 ansible_defaults_connection_plugins:
 ansible_defaults_lookup_plugins:
 ansible_defaults_inventory_plugins:
