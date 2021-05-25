@@ -13,6 +13,7 @@
 
 ansible_defaults_inventory:
 ansible_defaults_roles_path:
+ansible_defaults_collections_paths:
 ansible_defaults_library:
 ansible_defaults_module_utils:
 ansible_defaults_remote_tmp:
@@ -20,7 +21,7 @@ ansible_defaults_local_tmp:
 ansible_defaults_plugin_filters_cfg:
 ansible_defaults_action_plugins:
 ansible_defaults_cache_plugins:
-ansible_defaults_callback_plugins:
+ansible_defaults_callback_enabled:
 ansible_defaults_connection_plugins:
 ansible_defaults_lookup_plugins:
 ansible_defaults_inventory_plugins:
