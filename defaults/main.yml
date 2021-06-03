@@ -21,7 +21,7 @@ ansible_defaults_local_tmp:
 ansible_defaults_plugin_filters_cfg:
 ansible_defaults_action_plugins:
 ansible_defaults_cache_plugins:
-ansible_defaults_callback_enabled:
+ansible_defaults_callback_plugins:
 ansible_defaults_connection_plugins:
 ansible_defaults_lookup_plugins:
 ansible_defaults_inventory_plugins:
@@ -48,7 +48,7 @@ ansible_defaults_log_path:
 ansible_defaults_ansible_managed:
 ansible_defaults_fact_caching:
 ansible_defaults_stdout_callback:
-ansible_defaults_callback_whitelist:
+ansible_defaults_callback_enabled:
 ansible_defaults_task_includes_static:
 ansible_defaults_handler_includes_static:
 ansible_defaults_error_on_missing_handler:
@@ -190,11 +190,21 @@ ansible_diff_context:
 
 ansible_config_file_path: /etc/ansible/ansible.cfg
 
+# Uninstall ansible prior to run role tasks. This is usefull if the ansible
+# version to install requires prior version
+
+ansible_uninstall_first: no
+
+# Enable ANSIBLE_SKIP_CONFLICT_CHECK environment variable during install. See
+# ansible documentation for details
+
+ansible_skip_conflict_check: no
+
 #
 # SSH key generation config
 #
 
-ansible_ssh_generate_key: true
+ansible_ssh_generate_key: yes
 ansible_ssh_key_comment: Ansible key
 ansible_ssh_key_bits: 2048
 ansible_ssh_key_file: .ssh/id_rsa_ansible
