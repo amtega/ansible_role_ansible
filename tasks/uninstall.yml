@@ -1,0 +1,16 @@
+---
+# Role install tasks
+
+- name: Uninstall ansible
+  include_role:
+    name: amtega.packages
+  vars:
+    packages_python:
+      all:
+        all:
+          ansible: absent
+          ansible-base: absent
+          ansible-core: absent
+  tags:
+    - role::ansible
+    - role::ansible::uninstall

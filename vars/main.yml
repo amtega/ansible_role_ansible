@@ -9,6 +9,27 @@ ansible_pip_version: >-
       and ansible_required_version | length > 0)
      | ternary("==" + ansible_required_version | default(""), "") }}
 
+# Ansible version info
+
+ansible_detected_version: >-
+  {{ gather_current_version_result.stdout_lines
+     | select("search", "Version:")
+     | list
+     | first
+     | regex_replace("Version: (.*)", "\1") }}
+
+ansible_detected_major_version: >-
+  {{ ansible_detected_version | regex_replace("(.*)\..*\..*", "\1") }}
+
+ansible_required_major_version: >-
+  {{ ansible_required_version | regex_replace("(.*)\..*\..*", "\1") }}
+
+ansible_detected_minor_version: >-
+  {{ ansible_detected_version | regex_replace(".*\.(.*)\..*", "\1") }}
+
+ansible_required_minor_version: >-
+  {{ ansible_required_version | regex_replace(".*\.(.*)\..*", "\1") }}
+
 # OS packages
 
 ansible_packages_os:
@@ -126,7 +147,7 @@ ansible_config_sections:
     - ansible_defaults_ansible_managed
     - ansible_defaults_fact_caching
     - ansible_defaults_stdout_callback
-    - ansible_defaults_callback_whitelist
+    - ansible_defaults_callback_enabled
     - ansible_defaults_task_includes_static
     - ansible_defaults_handler_includes_static
     - ansible_defaults_error_on_missing_handler

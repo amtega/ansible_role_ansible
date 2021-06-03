@@ -5,17 +5,19 @@
   gather_facts: yes
   tasks:
     - name: Get ansible version
-      command: /var/lib/ansible/venv/bin/ansible --version
-      changed_when: false
+      shell: >-
+        set -o pipefail ; \
+        /var/lib/ansible/venv/bin/pip show ansible | grep "Version:"
+      changed_when: no
       register: ansible_version_result
 
     - name: Check that ansible version is correct
       assert:
-        that: ansible_version_result.stdout_lines[0] == "ansible 2.6.0"
+        that: ansible_version_result.stdout_lines[0] is search("4.0.0")
 
     - name: Read ansible config file
       command: cat {{ ansible_config_file_path }}
-      changed_when: false
+      changed_when: no
       register: read_config_result
 
     - name: Verify config file content

@@ -1,6 +1,20 @@
 ---
 # Role install tasks
 
+- block:
+    - name: Install ansible
+      include_role:
+        name: amtega.packages
+      vars:
+        packages_os: "{{ ansible_packages_os }}"
+        packages_python: "{{ ansible_packages_python }}"
+      when:
+        - ansible_required_version is defined
+        - ansible_required_version is not none
+  environment:
+    ANSIBLE_SKIP_CONFLICT_CHECK: >-
+      {{ (ansible_skip_conflict_check | bool) | ternary("1", "0") }}
+
 - name: Create required directories
   file:
     path: "{{ item }}"
