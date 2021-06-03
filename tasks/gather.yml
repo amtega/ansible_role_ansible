@@ -1,0 +1,27 @@
+---
+# Role gather tasks
+
+- block:
+    - name: Gather packages facts
+      include_role:
+        name: amtega.packages
+      vars:
+        packages_os: {}
+        packages_python: {}
+        packages_load_from_hostvars: no
+        packages_force: yes
+
+    - name: Gather ansible package info
+      shell: >-
+        {{ ansible_facts.packages_python_bin_dir
+           | default("") }}pip show ansible 2>/dev/null \
+           || echo "Version:"
+      args:
+        warn: no
+      failed_when: no
+      changed_when: no
+      register: gather_current_version_result
+
+  tags:
+    - role::ansible
+    - role::ansible::install
