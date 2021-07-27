@@ -2,6 +2,8 @@
 # Role gather tasks
 
 - block:
+    # We need to force this to get virtualenv config from packages
+
     - name: Gather packages facts
       include_role:
         name: amtega.packages
@@ -9,7 +11,7 @@
         packages_os: {}
         packages_python: {}
         packages_load_from_hostvars: no
-        packages_force: yes
+        packages_python_force: yes
 
     - name: Gather ansible package info
       shell: >-
