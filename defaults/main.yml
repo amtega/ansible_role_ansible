@@ -186,6 +186,10 @@ ansible_colors_diff_lines:
 ansible_diff_always:
 ansible_diff_context:
 
+# Setup or not config
+
+ansible_setup_config: yes
+
 # Config file
 
 ansible_config_file_path: /etc/ansible/ansible.cfg
@@ -199,6 +203,15 @@ ansible_uninstall_first: no
 # ansible documentation for details
 
 ansible_skip_conflict_check: no
+
+# Setup directories referenced in config
+
+ansible_setup_directories: yes
+
+# Mode to setup directories referenced in config (only if
+# ansible_setup_directories) is yes
+
+ansible_setup_directories_mode: 0755
 
 #
 # SSH key generation config
