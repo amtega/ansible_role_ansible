@@ -42,16 +42,12 @@ ansible_packages_os:
   centos:
     7:
       libselinux-python: present
-      python-boto3: present
       python-jmespath: present
       python-netaddr: present
       python-passlib: present
       python-psutil: present
       python3-libselinux: present
-      python3-boto3: present
       python3-jmespath: present
-      python3-netaddr: present
-      python3-passlib: present
       python3-psutil: present
 
     8:
@@ -74,16 +70,12 @@ ansible_packages_os:
   redhat:
     7:
       libselinux-python: present
-      python-boto3: present
       python-jmespath: present
       python-netaddr: present
-      python-passlib: present
       python-psutil: present
       python3-libselinux: present
-      python3-boto3: present
       python3-jmespath: present
       python3-netaddr: present
-      python3-passlib: present
       python3-psutil: present
 
     8:
@@ -102,6 +94,17 @@ ansible_packages_python:
       - name: "ansible{{ ansible_pip_version }}"
         state: present
         extra_args: --upgrade
+  centos:
+    7:
+      boto3: present
+      netaddr: present
+      passlib: present
+
+  redhat:
+    7:
+      boto3: present
+      netaddr: present
+      passlib: present
 
 # Config variables supported for each section
 

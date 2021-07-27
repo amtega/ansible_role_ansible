@@ -54,7 +54,7 @@ provisioner:
     hosts:
       molecule_hosts:
         vars:
-          ansible_required_version: 4.0.0
+          ansible_required_version: 4.1.0
           ansible_defaults_inventory: /etc/ansible/hosts
           ansible_defaults_roles_path: /etc/ansible/roles
           ansible_defaults_remote_tmp: /root/.ansible/tmp
