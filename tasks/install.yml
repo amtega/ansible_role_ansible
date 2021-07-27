@@ -11,53 +11,15 @@
       when:
         - ansible_required_version is defined
         - ansible_required_version is not none
+
+    - name: Setup ansible directories
+      include_tasks: directories.yml
+      when: ansible_setup_directories | bool
+
   environment:
     ANSIBLE_SKIP_CONFLICT_CHECK: >-
       {{ (ansible_skip_conflict_check | bool) | ternary("1", "0") }}
 
-- name: Create required directories
-  file:
-    path: "{{ item }}"
-    state: directory
-    mode: 0755
-  loop: >-
-    {{ config_directories
-       | reject("equalto", none)
-       | reject("equalto", "")
-       | list }}
-  vars:
-    config_directories:
-      - >-
-        {{ ansible_config_file_path | dirname
-           if ansible_config_file_path is not none
-           else none }}
-      - >-
-        {{ ansible_defaults_inventory | dirname
-           if ansible_defaults_inventory is not none
-           else none }}
-      - "{{ ansible_defaults_roles_path }}"
-      - "{{ ansible_defaults_library }}"
-      - "{{ ansible_defaults_module_utils }}"
-      - "{{ ansible_defaults_remote_tmp }}"
-      - "{{ ansible_defaults_local_tmp }}"
-      - >-
-        {{ ansible_defaults_plugin_filters_cfg | dirname
-           if ansible_defaults_plugin_filters_cfg is not none
-           else none }}
-      - "{{ ansible_defaults_action_plugins }}"
-      - "{{ ansible_defaults_cache_plugins }}"
-      - "{{ ansible_defaults_callback_plugins }}"
-      - "{{ ansible_defaults_connection_plugins }}"
-      - "{{ ansible_defaults_lookup_plugins }}"
-      - "{{ ansible_defaults_inventory_plugins }}"
-      - "{{ ansible_defaults_vars_plugins }}"
-      - "{{ ansible_defaults_filter_plugins }}"
-      - "{{ ansible_defaults_test_plugins }}"
-      - "{{ ansible_defaults_terminal_plugins }}"
-      - "{{ ansible_defaults_strategy_plugins }}"
-      - "{{ ansible_defaults_log_path | dirname
-            if ansible_defaults_log_path is not none
-            else none }}"
   tags:
     - role::ansible
     - role::ansible::install
