@@ -13,13 +13,13 @@
         - ansible_required_version is not none
 
     - name: Setup ansible directories
-      include_tasks: directories.yaml
+      include_tasks: directories.yml
       when: ansible_setup_directories | bool
 
   environment:
     ANSIBLE_SKIP_CONFLICT_CHECK: >-
       {{ (ansible_skip_conflict_check | bool) | ternary("1", "0") }}
-      
+
   tags:
     - role::ansible
     - role::ansible::install
