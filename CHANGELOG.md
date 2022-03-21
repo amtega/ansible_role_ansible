@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.9.4] - 2022-02-21
 ### Fixed
 - Fixed typo in callbacks setting.
+- Fixed duplicated key in packages setttings.
 
 ## [1.9.3] - 2022-02-22
 ### Fixed
