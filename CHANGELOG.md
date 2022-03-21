@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.4] - 2022-02-21
+### Fixed
+- Fixed typo in callbacks setting.
+
 ## [1.9.3] - 2022-02-22
 ### Fixed
 - Adapted for CentOS derived distros. Related to ansible/main#263

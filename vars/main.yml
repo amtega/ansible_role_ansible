@@ -125,7 +125,7 @@ ansible_config_sections:
     - ansible_defaults_ansible_managed
     - ansible_defaults_fact_caching
     - ansible_defaults_stdout_callback
-    - ansible_defaults_callback_enabled
+    - ansible_defaults_callbacks_enabled
     - ansible_defaults_task_includes_static
     - ansible_defaults_handler_includes_static
     - ansible_defaults_error_on_missing_handler
