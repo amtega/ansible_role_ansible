@@ -1,5 +1,10 @@
 ---
 
 - name: Prepare
-  hosts: molecule_hosts
+  hosts: molecule_hosts_centos_8
   gather_facts: no
+  tasks:
+    - name: Setup locale packages
+      package:
+        name: glibc-langpack-en
+        state: present
