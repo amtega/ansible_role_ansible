@@ -114,6 +114,11 @@ ansible_privilege_escalation_become_method:
 ansible_privilege_escalation_become_user:
 ansible_privilege_escalation_become_ask_pass:
 
+# Ansible connection config options. See ansible documentation for details
+
+
+ansible_connection_pipelining:
+
 # Ansible paramiko connection config options. See ansible documentation for
 # details
 
@@ -129,7 +134,6 @@ ansible_paramiko_connection_host_key_auto_add:
 ansible_ssh_connection_ssh_args:
 ansible_ssh_connection_control_path_dir:
 ansible_ssh_connection_control_path:
-ansible_ssh_connection_pipelining:
 ansible_ssh_connection_scp_if_ssh:
 ansible_ssh_connection_transfer_method:
 ansible_ssh_connection_sftp_batch_mode:

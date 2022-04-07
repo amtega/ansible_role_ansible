@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0] - 2022-04-07
+### Changed
+- Changed section of pipelining option.
+- Moved testing engine to podman.
+
 ## [1.9.4] - 2022-02-21
 ### Fixed
 - Fixed typo in callbacks setting.
