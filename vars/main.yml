@@ -187,11 +187,13 @@ ansible_config_sections:
     - ansible_paramiko_connection_look_for_keys
     - ansible_paramiko_connection_host_key_auto_add
 
+  connection:
+    - ansible_connection_pipelining
+
   ssh_connection:
     - ansible_ssh_connection_ssh_args
     - ansible_ssh_connection_control_path_dir
     - ansible_ssh_connection_control_path
-    - ansible_ssh_connection_pipelining
     - ansible_ssh_connection_scp_if_ssh
     - ansible_ssh_connection_transfer_method
     - ansible_ssh_connection_sftp_batch_mode

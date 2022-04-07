@@ -11,7 +11,7 @@ dependency:
     requirements-file: >-
       ${MOLECULE_SCENARIO_DIRECTORY}/../resources/requirements.yml
 driver:
-  name: docker
+  name: podman
 lint: "${MOLECULE_SCENARIO_DIRECTORY}/../resources/linters.sh"
 platforms:
   - name: "centos7-${INSTANCE_UUID:-1}"
@@ -25,7 +25,7 @@ platforms:
     groups:
       - molecule_hosts
       - molecule_hosts_centos
-      - molecule_hosts_centos_7
+      - molecule_hosts_centos_8
   - name: "fedora34-${INSTANCE_UUID:-1}"
     image: quay.io/fedora/fedora:34
     groups:
@@ -53,7 +53,7 @@ provisioner:
     hosts:
       molecule_hosts:
         vars:
-          ansible_required_version: 4.1.0
+          ansible_required_version: 4.4.0
           ansible_defaults_inventory: /etc/ansible/hosts
           ansible_defaults_roles_path: /etc/ansible/roles
           ansible_defaults_remote_tmp: /root/.ansible/tmp

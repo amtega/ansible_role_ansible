@@ -13,7 +13,9 @@
 
     - name: Check that ansible version is correct
       assert:
-        that: ansible_version_result.stdout_lines[0] is search("4.1.0")
+        that: >-
+          ansible_version_result.stdout_lines[0]
+          is search(ansible_required_version)
 
     - name: Read ansible config file
       command: cat {{ ansible_config_file_path }}
