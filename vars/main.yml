@@ -12,7 +12,7 @@ ansible_pip_version: >-
 # Ansible version info
 
 ansible_detected_version: >-
-  {{ gather_current_version_result.stdout_lines
+  {{ gather_current_version_result.stdout_lines 
      | select("search", "Version:")
      | list
      | first
