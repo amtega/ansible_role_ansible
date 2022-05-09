@@ -23,7 +23,6 @@
       failed_when: no
       changed_when: no
       register: gather_current_version_result
-
   tags:
     - role::ansible
     - role::ansible::install

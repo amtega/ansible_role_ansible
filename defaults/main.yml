@@ -190,6 +190,10 @@ ansible_colors_diff_lines:
 ansible_diff_always:
 ansible_diff_context:
 
+# Install ansible package
+
+ansible_install: yes
+
 # Setup or not config
 
 ansible_setup_config: yes
