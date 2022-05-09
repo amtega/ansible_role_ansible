@@ -1,28 +1,32 @@
 # Role tasks
 
 - name: Gather info
-  import_tasks: gather.yml
+  include_tasks: gather.yml
+  when: ansible_install | bool
   tags:
     - role::ansible
 
 - name: Uninstall ansible
-  import_tasks: uninstall.yml
-  when: >-
-    ansible_detected_major_version != ansible_required_major_version
-    or ansible_detected_minor_version != ansible_required_minor_version
-    or ansible_uninstall_first | bool
+  include_tasks: uninstall.yml
+  when:
+    - ansible_install | bool
+    - >-
+      ansible_detected_major_version != ansible_required_major_version
+      or ansible_detected_minor_version != ansible_required_minor_version
+      or ansible_uninstall_first | bool)
   tags:
     - role::ansible
     - role::ansible::uninstall
 
 - name: Install ansible
-  import_tasks: install.yml
+  include_tasks: install.yml
+  when: ansible_install | bool
   tags:
     - role::ansible
     - role::ansible::install
 
 - name: Configure ansible
-  import_tasks: configure.yml
+  include_tasks: configure.yml
   tags:
     - role::ansible
     - role::ansible::configure
