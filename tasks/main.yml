@@ -13,7 +13,7 @@
     - >-
       ansible_detected_major_version != ansible_required_major_version
       or ansible_detected_minor_version != ansible_required_minor_version
-      or ansible_uninstall_first | bool)
+      or ansible_uninstall_first | bool
   tags:
     - role::ansible
     - role::ansible::uninstall
